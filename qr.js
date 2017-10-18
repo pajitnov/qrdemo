@@ -9,11 +9,9 @@ var sassMiddleware = require('node-sass-middleware');
 var srcpath = './src/services/app/';
 var index = require(srcpath + 'index');
 var users = require(srcpath + 'users');
-
 var recogniseqr = require(srcpath + 'recogniseqr');
 var generateqr = require(srcpath + 'generateqr');
-var logqrattempts = require(srcpath + 'logqrattempts');
-
+var logqrattempts = require(srcpath + 'logqrattempts')
 
 var app = express();
 
