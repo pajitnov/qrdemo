@@ -6,8 +6,14 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var sassMiddleware = require('node-sass-middleware');
 
-var index = require('./routes/index');
-var users = require('./routes/users');
+var srcpath = './src/services/app/';
+var index = require(srcpath + 'index');
+var users = require(srcpath + 'users');
+
+var recogniseqr = require(srcpath + 'recogniseqr');
+var generateqr = require(srcpath + 'generateqr');
+var logqrattempts = require(srcpath + 'logqrattempts');
+
 
 var app = express();
 
@@ -28,6 +34,9 @@ app.use(sassMiddleware({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+app.use('/recogniseqr', recogniseqr);
+app.use('/generateqr', generateqr);
+app.use('/logqrattempts', logqrattempts);
 
 
 app.use('/users', users);
