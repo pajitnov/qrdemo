@@ -18,7 +18,7 @@ var logqrattempts = require(srcpath + 'logqrattempts');
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'src/client/views'));
 app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
@@ -26,12 +26,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(sassMiddleware({
-  src: path.join(__dirname, 'public'),
-  dest: path.join(__dirname, 'public'),
+  src: path.join(__dirname, '/build/client'),
+  dest: path.join(__dirname, '/build/client'),
   indentedSyntax: true, // true = .sass and false = .scss
   sourceMap: true
 }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/build/client')));
 
 app.use('/', index);
 app.use('/recogniseqr', recogniseqr);
